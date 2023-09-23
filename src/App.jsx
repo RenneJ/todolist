@@ -15,10 +15,15 @@ function App() {
     setItem({description:'', date:''});
   }
 
-  const printTasks = itemList.map((item) => 
-        <tr>
+  function handleDelete(deleteIndex) {
+    setItemList(itemList.filter((item, index) => index !== deleteIndex)); // jätetään "uuteen" listaan ne alkiot joiden index on ERI kuin klikatun rivin
+  }
+
+  const itemRows = itemList.map((item, index) => 
+        <tr key = {index}>
           <td>{item.date}</td>
           <td>{item.description}</td>
+          <td><button className="del-btn" onClick={() => {handleDelete(index)}}>Delete</button></td>
         </tr>
 
   );
@@ -29,9 +34,9 @@ function App() {
       <fieldset>
         <legend>Add todo</legend>
         <label>Description: </label>
-        <input type="text" name="description" value={item.description} onChange={changeState}/>
+        <input className="text-input" type="text" name="description" value={item.description} onChange={changeState}/>
         <label>Date: </label>
-        <input type="text" name="date" value={item.date} onChange={changeState}/>
+        <input className="text-input" type="text" name="date" value={item.date} onChange={changeState}/>
         <input id="add-btn" type="submit" value="Add" />
       </fieldset>
       </form>
@@ -41,7 +46,7 @@ function App() {
             <td><h3>Date</h3></td>
             <td><h3>Description</h3></td>
           </tr>
-          {printTasks}
+          {itemRows}
         </tbody>
       </table>
     </div>
