@@ -25,9 +25,6 @@ function App() {
 
   return (
     <div>
-<<<<<<< HEAD
-      This is test commit!!!
-=======
       <form onSubmit={addTask}>
       <fieldset>
         <legend>Add todo</legend>
@@ -47,7 +44,6 @@ function App() {
           {printTasks}
         </tbody>
       </table>
->>>>>>> 72c0a95b7d0ba44544b946901a92b2760555a103
     </div>
   )
 }
