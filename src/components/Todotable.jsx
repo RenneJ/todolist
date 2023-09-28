@@ -1,12 +1,8 @@
 import React from "react";
 
-export default function Todotable(props) {
+export default function Todotable({itemList, handleDelete}) {
 
-  function handleDelete(deleteIndex) {
-    props.setItemList(props.itemList.filter((item, index) => index !== deleteIndex)); // jätetään "uuteen" listaan ne alkiot joiden index on ERI kuin klikatun rivin
-  }
-
-  const itemRows = props.itemList.map((item, index) => 
+  const itemRows = itemList.map((item, index) => 
   <tr key = {index}>
     <td>{item.date}</td>
     <td>{item.description}</td>
