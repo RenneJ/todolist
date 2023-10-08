@@ -1,6 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef } from 'react';
+import App from './../App';
 import { useState } from 'react'
 import { AgGridReact } from 'ag-grid-react'; // the AG Grid React Component
+
+
 
 import 'ag-grid-community/styles/ag-grid.css'; // Core grid CSS, always needed
 import 'ag-grid-community/styles/ag-theme-material.css'; // Optional theme CSS
@@ -8,6 +11,8 @@ import 'ag-grid-community/styles/ag-theme-material.css'; // Optional theme CSS
 import Todotable from './Todotable';
 
 export default function Todolist() {
+
+        
     const [item, setItem] = useState({description: '', date: '', priority: 'Low'})
     const [itemList, setItemList] = useState([]);
     const gridRef = useRef();
@@ -18,7 +23,7 @@ export default function Todolist() {
             field: 'description',
             sortable: true,
             filter: true,
-            floatingFilter: true,
+           // floatingFilter: true,
             resizable: true
         },
         {
@@ -26,14 +31,14 @@ export default function Todolist() {
             field: 'date',
             sortable: true,
             filter: true,
-            floatingFilter: true
+            //floatingFilter: true
         },
         {
             headerName: 'Priority',
             field: 'priority',
             sortable: true,
             filter: true,
-            floatingFilter: true,
+          //  floatingFilter: true,
             cellStyle: param => param.value === "High" ? {color: 'red'} : {color : 'black'}
         }
     ];
@@ -55,7 +60,7 @@ export default function Todolist() {
   }
 
     return(
-        <div className="ag-theme-material" style={{width: '55em', height: '800px', margin: 'auto', textAlign: 'center'}}>
+        <div className="ag-theme-material" style={{width: '60em', height: '800px', margin: 'auto', textAlign: 'center'}}>
             <h1>SIMPLE TODO LIST</h1>
                 <fieldset>
                 <legend>Add todo</legend>
@@ -75,14 +80,16 @@ export default function Todolist() {
                     <button onClick={addTask}>Add</button>
                     <button onClick={handleDelete}>Delete</button>
                 </fieldset>
-            <AgGridReact 
-                rowSelection="single"
-                ref={gridRef}
-                onGridReady={ params => gridRef.current = params.api }
-                columnDefs={columns}
-                rowData={itemList}
-                animateRows="true"
-            />
+            <div className="ag-theme-material" style={{width: '45em', height: '800px', margin: 'auto', textAlign: 'center'}}>
+                <AgGridReact 
+                    rowSelection="single"
+                    ref={gridRef}
+                    onGridReady={ params => gridRef.current = params.api }
+                    columnDefs={columns}
+                    rowData={itemList}
+                    animateRows="true"
+                />
+            </div>
         </div>
     )
 }
