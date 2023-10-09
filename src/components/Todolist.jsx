@@ -69,9 +69,8 @@ export default function Todolist() {
   }
 
     return(
-        <div className="ag-theme-material" style={{width: '100%', height: '800px', margin: 'auto', textAlign: 'center'}}>
+        <div>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <h1>SIMPLE TODO LIST</h1>
                 <FormControl fullWidth>
                 <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
                     
@@ -97,7 +96,7 @@ export default function Todolist() {
                     
                 </Stack>
                 </FormControl>
-            <div className="ag-theme-material" style={{width: '45em', height: '800px', margin: 'auto', textAlign: 'center'}}>
+            <div className="ag-theme-material" style={{width: '45em', height: '400px', margin: 'auto', textAlign: 'center'}}>
                 <AgGridReact 
                     rowSelection="single"
                     ref={gridRef}
