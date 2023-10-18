@@ -6,7 +6,6 @@ export default function Todotable({itemList, handleDelete}) {
   <tr key = {index}>
     <td>{item.date}</td>
     <td>{item.description}</td>
-    <td><button className="del-btn" onClick={() => {handleDelete(index)}}>Delete</button></td>
   </tr>
 
 );
